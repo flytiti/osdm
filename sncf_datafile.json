@@ -1,0 +1,64 @@
+{
+    "scenarios": [
+        {
+			"loggingType": "INFO",
+            "code": "OTST_TS_SNCF_RFND_01",
+            "osdmVersion": "3.2",
+            "desiredType": "ADMISSION",
+            "currency": "EUR",
+            "refundOverruleCode": "DISRUPTION",
+            "tripRequirementId": 1,
+            "passengersListId": 1,
+            "desiredFlexibility": "SEMI_FLEXIBLE"
+        }
+    ],
+	"offerSearchCriteria": [
+        {
+			"requestedOfferParts": ["ADMISSION", "RESERVATION"],
+            "currency": "EUR",
+            "serviceClass": "STANDARD",
+            "travelClass": "ANY_CLASS",
+            "requiresPlaceSelection": false,
+            "flexibilities": ["FULL_FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEXIBLE"]
+        }
+    ],
+	"requestedFulfillmentOptions": [
+        {
+            "fulfillmentMedia": "UIC_PDF",
+            "fulfillmentType": "ETICKET"
+        }
+    ],
+    "tripRequirements": [
+        {
+            "id": 1,
+            "tripType": "SEARCH",
+            "trip": 
+                {
+                    "origin": "urn:uic:stn:8748100",
+                    "destination": "urn:uic:stn:8739100",
+                    "startDatetime": "%TRIP_DATE%T06:40:00+01:00",
+                    "endDatetime": "%TRIP_DATE%T08:45:00+02:00",
+                    "productCategoryRef": "",
+                    "productCategoryName": "",
+                    "productCategoryShortName": ""
+                }
+        }
+    ],
+    "passengersList": [
+        {
+            "id": 1,
+            "passengers": [
+                {
+                    "reference": "12345",
+                    "dateOfBirth": "1999-01-01",
+					"patchFirstName": "John",
+					"patchLastName": "Doe",
+                    "patchDateOfBirth": "1999-01-02",
+					"patchPhoneNumber": "+33612345678",
+					"patchEmail": "john.doe@gmail.com",
+                    "type": "PERSON"
+                }
+            ]
+        }
+    ]
+}
