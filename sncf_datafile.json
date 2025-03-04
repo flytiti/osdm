@@ -36,8 +36,8 @@
                 {
                     "origin": "urn:uic:stn:8748100",
                     "destination": "urn:uic:stn:8739100",
-                    "startDatetime": "%TRIP_DATE%T06:40:00Z",
-                    "endDatetime": "%TRIP_DATE%T08:45:00Z",
+                    "startDatetime": "%TRIP_DATE%T06:40:00",
+                    "endDatetime": "%TRIP_DATE%T08:45:00",
                     "productCategoryRef": "",
                     "productCategoryName": "",
                     "productCategoryShortName": ""
