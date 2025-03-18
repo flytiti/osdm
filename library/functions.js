@@ -896,7 +896,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	validationLogger("[INFO] desiredFlexibility for current scenario : " + desiredFlexibility);
 
 	//modif TGA
-	console.log("🔍 [INFO] offer : ", offer);
+	console.log("🔍 [INFO] offers TGA : ", offers);
 	
 	let selectedOffer = offers.find(offer => 
 		//Mofif TGA
@@ -907,7 +907,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	pm.globals.set("offers", offers);
 
 	//modif TGA
-	console.log("🔍 [INFO] Selected offer : ", selectedOffer);
+	console.log("🔍 [INFO] Selected offer TGA : ", selectedOffer);
 	
 	if (selectedOffer) {
 		console.log("🔍 [INFO] Selected offer : ", selectedOffer);
