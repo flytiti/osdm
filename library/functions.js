@@ -897,6 +897,9 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 	//modif TGA
 	console.log("🔍 [INFO] offers TGA : ", offers);
+	offers.forEach(function(offer) {
+	  console.log("🔍 [INFO] product TGA : ", offer.products);
+	});
 	console.log("🔍 [INFO] offers[0].products[0].flexibility TGA : ", offers[0].products[0].flexibility);
 	
 	let selectedOffer = offers.find(offer => 
