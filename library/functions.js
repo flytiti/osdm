@@ -894,6 +894,10 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 	let desiredFlexibility = pm.globals.get("desiredFlexibility"); 
 	validationLogger("[INFO] desiredFlexibility for current scenario : " + desiredFlexibility);
+
+	//modif TGA
+	console.log("🔍 [INFO] offer : ", offer);
+	
 	let selectedOffer = offers.find(offer => 
 		//Mofif TGA
 		//offer.offerSummary.overallFlexibility === desiredFlexibility
