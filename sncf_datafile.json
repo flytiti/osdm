@@ -17,7 +17,7 @@
 	    "requestedOfferParts": ["ADMISSION"],
             "currency": "EUR",
             "serviceClass": "STANDARD",
-            "travelClass": "ANY_CLASS",
+            "travelClass": "SECOND",
             "requiresPlaceSelection": false,
             "flexibilities": ["SEMI_FLEXIBLE"]
         }
