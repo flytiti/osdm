@@ -898,7 +898,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		//Mofif TGA
 		//offer.offerSummary.overallFlexibility === desiredFlexibility
 		//validationLogger("[INFO] offer.products.flexibility : " + offer.products.flexibility);
-		offer.products.flexibility === desiredFlexibility
+		offer.products[0].flexibility === desiredFlexibility
 	);
 	pm.globals.set("offers", offers);
 
