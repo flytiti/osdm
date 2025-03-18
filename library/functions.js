@@ -901,6 +901,10 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		offer.products.flexibility === desiredFlexibility
 	);
 	pm.globals.set("offers", offers);
+
+	//modif TGA
+	console.log("🔍 [INFO] Selected offer : ", selectedOffer);
+	
 	if (selectedOffer) {
 		console.log("🔍 [INFO] Selected offer : ", selectedOffer);
 		pm.globals.set("offerId", selectedOffer.offerId);
