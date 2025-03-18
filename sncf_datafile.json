@@ -19,7 +19,7 @@
             "serviceClass": "STANDARD",
             "travelClass": "ANY_CLASS",
             "requiresPlaceSelection": false,
-            "flexibilities": ["FULL_FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEXIBLE"]
+            "flexibilities": ["SEMI_FLEXIBLE"]
         }
     ],
 	"requestedFulfillmentOptions": [
