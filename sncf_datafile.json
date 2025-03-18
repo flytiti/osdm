@@ -18,7 +18,7 @@
             "currency": "EUR",
             "serviceClass": "STANDARD",
             "travelClass": "ANY_CLASS",
-            "requiresPlaceSelection": false,
+            "requiresPlaceSelection": true,
             "flexibilities": ["FULL_FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEXIBLE"]
         }
     ],
