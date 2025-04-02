@@ -952,7 +952,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		for (let flexibility in flexibilities) {
 			for (let uniqueFlexibility in uniqueProductFlexibilityList) {
 				if (flexibility === uniqueFlexibility) {
-					finalFlexibility = flexibility;
+					finalFlexibility = flexibilities[flexibility];
 				}
 			}
 		}
