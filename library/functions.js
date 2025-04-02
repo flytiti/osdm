@@ -398,19 +398,30 @@ parseScenarioData = function(jsonData) {
 				        ));
 
 					// modif TGA - ajout 
-					var contact = new Contact(passenger.patchEmail, 
-								  passenger.patchPhoneNumber);
-					var detailContact = new DetailContact(passenger.patchFirstName, 
-									      passenger.patchLastName, 
+					if()
+					    var contact = new Contact(passenger.email, 
+								  passenger.phoneNumber);
+					var detailContact = new DetailContact(passenger.firstName, 
+									      passenger.lastName, 
 									      contact);
+
+					passengerSpecs.push(new PassengerSpec(
+					            pm.globals.get(passengerKey),
+					            passenger.type,
+					            passenger.dateOfBirth,
+						    detailContact
+					        ));    
 					// fin modif TGA
 					    
 				    	passengerSpecs.push(new PassengerSpec(
 					            pm.globals.get(passengerKey),
 					            passenger.type,
-					            passenger.dateOfBirth,
-						    detailContact
+					            passenger.dateOfBirth
 					        ));
+
+
+
+					    
 						passengerReferences.push(pm.globals.get(passengerKey));
 
 						let passengerAdditionalDataStruct = {
