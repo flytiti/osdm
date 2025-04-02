@@ -51,9 +51,13 @@
                 {
                     "reference": "12345",
                     "dateOfBirth": "1999-01-01",
+			"firstName": "John",
+			"lastName": "Doe",
+			"phoneNumber": "33612345678",
+			"email": "john.doe@gmail.com",
 					"patchFirstName": "John",
 					"patchLastName": "Doe",
-                    "patchDateOfBirth": "1999-01-02",
+                    			"patchDateOfBirth": "1999-01-02",
 					"patchPhoneNumber": "33612345678",
 					"patchEmail": "john.doe@gmail.com",
                     "type": "PERSON"
