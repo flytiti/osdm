@@ -72,9 +72,10 @@ function buildBookingRequest() {
 	placeSelections();
 	var osdmVersion = pm.globals.get("osdmVersion");
 
-	// TGA - Ajout => || osdmVersion == "3.2.2"
+	// modif TGA - Ajout => || osdmVersion == "3.2.2"
 	if (osdmVersion == "3.4" || osdmVersion == "3.2.2") {
-		var contact = new Contact("yourusername@example.com","+33612345678");
+		// // modif TGA - suppression du + dans numero telephone
+		var contact = new Contact("yourusername@example.com","33612345678");
 		var detail = new DetailContact("Pur","Chaser", contact);
 		var purchaser = new PurchaserContact(detail);
 	} else {	
