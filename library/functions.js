@@ -920,22 +920,55 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	//modif TGA - Ajout
 	
 	console.log("🔍 [INFO] offers TGA : ", offers);
+	var finalOfferId = "";
 	offers.forEach(function(offer) {
-	  	console.log("🔍 [INFO] product TGA : ", offer.products);
-	  	console.log("🔍 [INFO] offerSummary TGA : ", offer.offerSummary);
 		
 		var productFlexibilityList = [];
-		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseigné
+		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseignée
 	  	if (offer.offerSummary===undefined) {
 			offer.products.forEach(function(product) {
 				productFlexibilityList.push(product.flexibility);
 			});
 			console.log("===== > TGA : offerSummary undefined");
 			console.log("===== > TGA : offer productFlexibilityList : ", productFlexibilityList);
+
+			// productFlexibilityList unique
+			var uniqueProductFlexibilityList = [];
+			productFlexibilityList.forEach(function(item) {
+			    if (!uniqueProductFlexibilityList.includes(item)) {
+			        uniqueProductFlexibilityList.push(item);
+			    }
+			});
+			console.log("===== > TGA : offer offerId : ", offer);
+			console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
+		
+			//degradation flexibilité
+			var finalFlexibility = "";
+			const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
+			for (let flexibility in flexibilities) {
+				for (let uniqueFlexibility in uniqueProductFlexibilityList) {
+					if (flexibilities[flexibility] === uniqueProductFlexibilityList[uniqueFlexibility]) {
+						finalFlexibility = flexibilities[flexibility];
+					}
+				}
+			}
+			console.log("===== > TGA : finalFlexibility : ", finalFlexibility);
+
+			if (finalFlexibility === desiredFlexibility) {
+				finalOfferId = offer.offerId;
+				break;
+			}
+			
 		} else {
 			console.log("===== > TGA : offerSummary defined : ", offer.offerSummary.overallFlexibility);
+
+			if (offer.offerSummary.overallFlexibility === desiredFlexibility) {
+				finalOfferId = offer.offerId;
+				break;
+			}
 		}
-		
+
+		/*
 		// productFlexibilityList unique
 		var uniqueProductFlexibilityList = [];
 		productFlexibilityList.forEach(function(item) {
@@ -956,24 +989,23 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 				}
 			}
 		}
-		console.log("===== > TGA : finalFlexibility : ", finalFlexibility);
+		console.log("===== > TGA : finalFlexibility : ", finalFlexibility);*/
 		
 	});
+
+
+	let selectedOffer = offers.find(offer => 
+		offer.offerId === finalOfferId
+	);
 	//modif TGA - fin Ajout
 
-	
-	console.log("🔍 [INFO] offers[0].products[0].flexibility TGA : ", offers[0].products[0].flexibility);
-	
-	let selectedOffer = offers.find(offer => 
-		//Modif TGA
-		//offer.offerSummary.overallFlexibility === desiredFlexibility
-		//validationLogger("[INFO] offer.products.flexibility : " + offer.products.flexibility);
-		offer.products[0].flexibility === desiredFlexibility
-	);
-	pm.globals.set("offers", offers);
+	//modif TGA - Suppression
+	/*let selectedOffer = offers.find(offer => 
+		offer.offerSummary.overallFlexibility === desiredFlexibility
+	);*/
+	//modif TGA - fin Suppression
 
-	//modif TGA
-	console.log("🔍 [INFO] Selected offer TGA : ", selectedOffer);
+	pm.globals.set("offers", offers);
 	
 	if (selectedOffer) {
 		console.log("🔍 [INFO] Selected offer : ", selectedOffer);
