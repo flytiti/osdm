@@ -951,7 +951,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
 		for (let flexibility in flexibilities) {
 			for (let uniqueFlexibility in uniqueProductFlexibilityList) {
-				if (flexibility === uniqueFlexibility) {
+				if (flexibilities[flexibility] === uniqueProductFlexibilityList[uniqueFlexibility]) {
 					finalFlexibility = flexibilities[flexibility];
 				}
 			}
