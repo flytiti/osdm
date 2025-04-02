@@ -398,27 +398,27 @@ parseScenarioData = function(jsonData) {
 				        ));
 
 					// modif TGA - ajout 
-					if()
+					if(passenger.firstName!="" & passenger.lastName!="") {
 					    var contact = new Contact(passenger.email, 
 								  passenger.phoneNumber);
-					var detailContact = new DetailContact(passenger.firstName, 
+					    var detailContact = new DetailContact(passenger.firstName, 
 									      passenger.lastName, 
 									      contact);
 
-					passengerSpecs.push(new PassengerSpec(
+					    passengerSpecs.push(new PassengerSpec(
 					            pm.globals.get(passengerKey),
 					            passenger.type,
 					            passenger.dateOfBirth,
 						    detailContact
-					        ));    
-					// fin modif TGA
-					    
-				    	passengerSpecs.push(new PassengerSpec(
+					        ));
+					} else {  
+				    	    passengerSpecs.push(new PassengerSpec(
 					            pm.globals.get(passengerKey),
 					            passenger.type,
 					            passenger.dateOfBirth
 					        ));
-
+					}
+					// fin modif TGA
 
 
 					    
