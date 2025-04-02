@@ -54,7 +54,7 @@
 					"patchFirstName": "John",
 					"patchLastName": "Doe",
                     "patchDateOfBirth": "1999-01-02",
-					"patchPhoneNumber": "+33612345678",
+					"patchPhoneNumber": "33612345678",
 					"patchEmail": "john.doe@gmail.com",
                     "type": "PERSON"
                 }
