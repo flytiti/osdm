@@ -942,6 +942,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		        uniqueProductFlexibilityList.push(item);
 		    }
 		});
+		console.log("===== > TGA : offer offerId : ", offer);
 		console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
 	});
 	//modif TGA - fin Ajout
