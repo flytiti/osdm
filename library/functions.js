@@ -917,16 +917,40 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	let desiredFlexibility = pm.globals.get("desiredFlexibility"); 
 	validationLogger("[INFO] desiredFlexibility for current scenario : " + desiredFlexibility);
 
-	//modif TGA
+	//modif TGA - Ajout
+	var productFlexibilityList = [];
 	console.log("🔍 [INFO] offers TGA : ", offers);
 	offers.forEach(function(offer) {
-	  console.log("🔍 [INFO] product TGA : ", offer.products);
-	  console.log("🔍 [INFO] offerSummary TGA : ", offer.offerSummary);
+	  	console.log("🔍 [INFO] product TGA : ", offer.products);
+	  	console.log("🔍 [INFO] offerSummary TGA : ", offer.offerSummary);
+
+		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseigné
+	  	if (offer.offerSummary===undefined) {
+			offer.products.forEach(function(product) {
+				productFlexibilityList.push(product.flexibility);
+			}
+			console.log("===== > TGA : offerSummary undefined");
+			console.log("===== > TGA : offer productFlexibilityList : ", productFlexibilityList);
+		} else {
+			console.log("===== > TGA : offerSummary defined : ", offer.offerSummary.overallFlexibility);
+		}
+		
+		// productFlexibilityList unique
+		const uniqueProductFlexibilityList = [];
+		array.forEach(item => {
+		    if (!uniqueProductFlexibilityList.includes(item)) {
+		        uniqueProductFlexibilityList.push(item);
+		    }
+		})
+		console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
 	});
+	//modif TGA - fin Ajout
+
+	
 	console.log("🔍 [INFO] offers[0].products[0].flexibility TGA : ", offers[0].products[0].flexibility);
 	
 	let selectedOffer = offers.find(offer => 
-		//Mofif TGA
+		//Modif TGA
 		//offer.offerSummary.overallFlexibility === desiredFlexibility
 		//validationLogger("[INFO] offer.products.flexibility : " + offer.products.flexibility);
 		offer.products[0].flexibility === desiredFlexibility
