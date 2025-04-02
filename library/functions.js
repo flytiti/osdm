@@ -397,6 +397,14 @@ parseScenarioData = function(jsonData) {
 				            passenger.dateOfBirth
 				        ));
 
+					// modif TGA - ajout 
+					var contact = new Contact(passenger.patchEmail, 
+								  passenger.patchPhoneNumber);
+					var detailContact = new DetailContact(passenger.patchFirstName, 
+									      passenger.patchLastName, 
+									      contact);
+					// fin modi TGA
+					    
 				    	passengerSpecs.push(new PassengerSpec(
 					            pm.globals.get(passengerKey),
 					            passenger.type,
