@@ -403,12 +403,13 @@ parseScenarioData = function(jsonData) {
 					var detailContact = new DetailContact(passenger.patchFirstName, 
 									      passenger.patchLastName, 
 									      contact);
-					// fin modi TGA
+					// fin modif TGA
 					    
 				    	passengerSpecs.push(new PassengerSpec(
 					            pm.globals.get(passengerKey),
 					            passenger.type,
-					            passenger.dateOfBirth
+					            passenger.dateOfBirth,
+						    detailContact
 					        ));
 						passengerReferences.push(pm.globals.get(passengerKey));
 
