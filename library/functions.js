@@ -918,12 +918,13 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	validationLogger("[INFO] desiredFlexibility for current scenario : " + desiredFlexibility);
 
 	//modif TGA - Ajout
-	var productFlexibilityList = [];
+	
 	console.log("🔍 [INFO] offers TGA : ", offers);
 	offers.forEach(function(offer) {
 	  	console.log("🔍 [INFO] product TGA : ", offer.products);
 	  	console.log("🔍 [INFO] offerSummary TGA : ", offer.offerSummary);
-
+		
+		var productFlexibilityList = [];
 		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseigné
 	  	if (offer.offerSummary===undefined) {
 			offer.products.forEach(function(product) {
@@ -944,6 +945,19 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		});
 		console.log("===== > TGA : offer offerId : ", offer);
 		console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
+	
+		//degradation flexibilité
+		var finalFlexibility = "";
+		const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
+		for (let flexibility in flexibilities) {
+			for (let uniqueFlexibility in uniqueProductFlexibilityList) {
+				if (flexibility === uniqueFlexibility) {
+					finalFlexibility = flexibility;
+				}
+			}
+		}
+		console.log("===== > TGA : finalFlexibility : ", finalFlexibility);
+		
 	});
 	//modif TGA - fin Ajout
 
