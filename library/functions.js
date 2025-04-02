@@ -919,7 +919,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 	//modif TGA - Ajout
 	
-	console.log("🔍 [INFO] offers TGA : ", offers);
+	console.log("[INFO] offers : ", offers);
 	var finalOfferId = "";
 	offers.every(function(offer) {
 		
@@ -929,8 +929,8 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 			offer.products.forEach(function(product) {
 				productFlexibilityList.push(product.flexibility);
 			});
-			console.log("===== > TGA : offerSummary undefined");
-			console.log("===== > TGA : offer productFlexibilityList : ", productFlexibilityList);
+			console.log("[INFO] offer offerSummary not defined, search product flexibilities");
+			console.log("[INFO] offer products flexibilities : ", productFlexibilityList);
 
 			// productFlexibilityList unique
 			var uniqueProductFlexibilityList = [];
@@ -939,9 +939,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 			        uniqueProductFlexibilityList.push(item);
 			    }
 			});
-			console.log("===== > TGA : offer offerId : ", offer);
-			console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
-		
+			
 			//degradation flexibilité
 			var finalFlexibility = "";
 			const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
@@ -952,7 +950,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 					}
 				}
 			}
-			console.log("===== > TGA : finalFlexibility : ", finalFlexibility);
+			console.log("[INFO] Most restrictive flexibility : ", finalFlexibility);
 
 			if (finalFlexibility === desiredFlexibility) {
 				finalOfferId = offer.offerId;
@@ -960,7 +958,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 			}
 			
 		} else {
-			console.log("===== > TGA : offerSummary defined : ", offer.offerSummary.overallFlexibility);
+			console.log("[INFO] offer offerSummary is defined, search offer offerSummary overallFlexibility");
 
 			if (offer.offerSummary.overallFlexibility === desiredFlexibility) {
 				finalOfferId = offer.offerId;
@@ -968,32 +966,8 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 			}
 		}
 
-		/*
-		// productFlexibilityList unique
-		var uniqueProductFlexibilityList = [];
-		productFlexibilityList.forEach(function(item) {
-		    if (!uniqueProductFlexibilityList.includes(item)) {
-		        uniqueProductFlexibilityList.push(item);
-		    }
-		});
-		console.log("===== > TGA : offer offerId : ", offer);
-		console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
-	
-		//degradation flexibilité
-		var finalFlexibility = "";
-		const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
-		for (let flexibility in flexibilities) {
-			for (let uniqueFlexibility in uniqueProductFlexibilityList) {
-				if (flexibilities[flexibility] === uniqueProductFlexibilityList[uniqueFlexibility]) {
-					finalFlexibility = flexibilities[flexibility];
-				}
-			}
-		}
-		console.log("===== > TGA : finalFlexibility : ", finalFlexibility);*/
-
 		return true;
 	});
-
 
 	let selectedOffer = offers.find(offer => 
 		offer.offerId === finalOfferId
