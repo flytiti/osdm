@@ -921,7 +921,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	
 	console.log("🔍 [INFO] offers TGA : ", offers);
 	var finalOfferId = "";
-	offers.forEach(function(offer) {
+	offers.every(function(offer) {
 		
 		var productFlexibilityList = [];
 		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseignée
@@ -956,7 +956,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 			if (finalFlexibility === desiredFlexibility) {
 				finalOfferId = offer.offerId;
-				break;
+				return false;
 			}
 			
 		} else {
@@ -964,7 +964,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 			if (offer.offerSummary.overallFlexibility === desiredFlexibility) {
 				finalOfferId = offer.offerId;
-				break;
+				return false;
 			}
 		}
 
@@ -990,7 +990,8 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 			}
 		}
 		console.log("===== > TGA : finalFlexibility : ", finalFlexibility);*/
-		
+
+		return true;
 	});
 
 
