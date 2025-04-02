@@ -72,7 +72,8 @@ function buildBookingRequest() {
 	placeSelections();
 	var osdmVersion = pm.globals.get("osdmVersion");
 
-	if (osdmVersion == "3.4") {
+	// TGA - Ajout => || osdmVersion == "3.2.2"
+	if (osdmVersion == "3.4" || osdmVersion == "3.2.2") {
 		var contact = new Contact("yourusername@example.com","+33612345678");
 		var detail = new DetailContact("Pur","Chaser", contact);
 		var purchaser = new PurchaserContact(detail);
