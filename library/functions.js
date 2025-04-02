@@ -928,7 +928,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	  	if (offer.offerSummary===undefined) {
 			offer.products.forEach(function(product) {
 				productFlexibilityList.push(product.flexibility);
-			}
+			});
 			console.log("===== > TGA : offerSummary undefined");
 			console.log("===== > TGA : offer productFlexibilityList : ", productFlexibilityList);
 		} else {
@@ -936,12 +936,12 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		}
 		
 		// productFlexibilityList unique
-		const uniqueProductFlexibilityList = [];
-		array.forEach(item => {
+		var uniqueProductFlexibilityList = [];
+		productFlexibilityList.forEach(function(item) {
 		    if (!uniqueProductFlexibilityList.includes(item)) {
 		        uniqueProductFlexibilityList.push(item);
 		    }
-		})
+		});
 		console.log("===== > TGA : offer productFlexibilityList unique : ", uniqueProductFlexibilityList);
 	});
 	//modif TGA - fin Ajout
