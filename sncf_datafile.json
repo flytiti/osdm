@@ -3,7 +3,7 @@
         {
 			"loggingType": "INFO",
             "code": "OTST_TS_OB_RFND",
-            "osdmVersion": "3",
+            "osdmVersion": "3.2.2",
             "desiredType": "ADMISSION",
             "currency": "EUR",
             "refundOverruleCode": "DISRUPTION",
