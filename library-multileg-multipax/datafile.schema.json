@@ -1,0 +1,206 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://testing.osdm.io/datafile.schema.json",
+	"title": "OTST Datafile",
+	"description": "Schema for OTST datafiles",
+	"type": "object",
+	"properties": {
+		"scenarios": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"loggingType": {
+						"type": "string",
+						"enum": ["FULL", "INFO", "DEBUG", "ERROR"]
+					},
+					"code": {
+						"type": "string"
+					},
+					"osdmVersion": {
+						"type": "string"
+					},
+					"desiredType": {
+						"type": "string",
+						"enum": ["ADMISSION", "RESERVATION"]
+					},
+					"currency": {
+						"type": "string",
+						"minLength": 3,
+						"maxLength": 3
+					},
+					"refundOverruleCode": {
+						"type": "string"
+					},
+					"refundDate": {
+						"type": "string",
+						"enum": ["null"]
+					},
+					"tripRequirementId": {
+						"type": "integer"
+					},
+					"passengersListId": {
+						"type": "integer"
+					},
+					"requestedFulfillmentOptionsListId": {
+						"type": "integer"
+					},
+					"desiredFlexibility": {
+						"type": "string",
+						"enum": ["NON_FLEXIBLE", "SEMI_FLEXIBLE", "FULL_FLEXIBLE"]
+					}
+				},
+				"required": [
+					"loggingType",
+					"code",
+					"osdmVersion",
+					"tripRequirementId",
+					"passengersListId",
+					"requestedFulfillmentOptionsListId"
+				]
+			}
+		},
+		"offerSearchCriteria": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"requestedOfferParts": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["RESERVATION", "ADMISSION"]
+						}
+					},
+					"currency": {
+						"type": "string",
+						"minLength": 3,
+						"maxLength": 3
+					},
+					"serviceClass": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["STANDARD"]
+						}
+					},
+					"travelClass": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["SECOND"]
+						}
+					},
+					"requiresPlaceSelection": {
+						"type": "boolean"
+					},
+					"flexibilities": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": ["FULL_FLEXIBLE", "NON_FLEXIBLE"]
+						}
+					},
+					"offerMode": {
+						"type": "string",
+						"enum": ["INDIVIDUAL", "COLLECTIVE"]
+					}
+				},
+				"required": ["currency"]
+			}
+		},
+		"requestedFulfillmentOptions": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"fulfillmentMedia": {
+						"type": "string",
+						"enum": ["PDF_A4", "UIC_PDF"]
+					},
+					"fulfillmentType": {
+						"type": "string",
+						"enum": ["ETICKET"]
+					}
+				}
+			}
+		},
+		"tripRequirements": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer"
+					},
+					"tripType": {
+						"type": "string",
+						"enum": ["SEARCH", "SPECIFICATION"]
+					},
+					"trip": {
+						"type": "object"
+					},
+					"legs": {
+						"type": "array",
+						"items": {
+							"type": "object"
+						}
+					}
+				},
+				"required": ["id", "tripType"]
+			}
+		},
+		"passengersList": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer"
+					},
+					"passengers": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"reference": {
+									"type": "string"
+								},
+								"dateOfBirth": {
+									"type": "string"
+								},
+								"patchFirstName": {
+									"type": "string"
+								},
+								"patchLastName": {
+									"type": "string"
+								},
+								"patchDateOfBirth": {
+									"type": "string"
+								},
+								"patchPhoneNumber": {
+									"type": "string"
+								},
+								"patchEmail": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"enum": ["PERSON"]
+								}
+							}
+						}
+					}
+				},
+				"required": ["id", "passengers"]
+			}
+		}
+	},
+	"required": [
+		"scenarios",
+		"offerSearchCriteriaList",
+		"requestedFulfillmentOptionsList",
+		"tripRequirements",
+		"passengersList"
+	]
+}
