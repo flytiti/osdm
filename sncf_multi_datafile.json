@@ -1,0 +1,187 @@
+{
+    "scenarios": [
+        {
+			"loggingType": "INFO",
+            "code": "OTST_RFND_SRCH_CRIT_1ADT_1LEG",
+            "osdmVersion": "3.2.2",
+            "refundOverruleCode": "PAYMENT_FAILURE",
+            "refundDate": "null",
+            "tripRequirementId": 1,
+            "passengersListId": 1,
+            "offerSearchCriteriaListId" : 1,
+            "requestedFulfillmentOptionsListId": 1
+        },
+        {
+			"loggingType": "INFO",
+            "code": "OTST_RFND_SRCH_CRIT_2ADT_1LEG",
+            "osdmVersion": "3.2.2",
+            "tripRequirementId": 1,
+            "passengersListId": 2,
+            "offerSearchCriteriaListId" : 2,
+            "requestedFulfillmentOptionsListId": 1
+        },
+        {
+			"loggingType": "INFO",
+            "code": "OTST_RFND_SRCH_CRIT_2ADT_1CHD_1LEG",
+            "osdmVersion": "3.2.2",
+            "tripRequirementId": 1,
+            "passengersListId": 3,
+            "offerSearchCriteriaListId" : 1,
+            "requestedFulfillmentOptionsListId": 1
+        },
+        {
+			"loggingType": "INFO",
+            "code": "OTST_RFND_SRCH_CRIT_1ADT_2LEG",
+            "osdmVersion": "3.2.2",
+            "tripRequirementId": 2,
+            "passengersListId": 1,
+            "offerSearchCriteriaListId" : 1,
+            "requestedFulfillmentOptionsListId": 1
+        },
+        {
+			"loggingType": "INFO",
+            "code": "OTST_RFND_SRCH_CRIT_2ADT_2LEG",
+            "osdmVersion": "3.2.2",
+            "tripRequirementId": 2,
+            "passengersListId": 2,
+            "offerSearchCriteriaListId" : 1,
+            "requestedFulfillmentOptionsListId": 1
+        }        
+    ],
+	"offerSearchCriteriaList": [
+        {
+            "id": 1,
+            "offerSearchCriteria": [
+                {
+                    "requestedOfferParts": ["RESERVATION", "ADMISSION"],
+                    "currency": "EUR",
+                    "serviceClass": ["STANDARD"],
+                    "travelClass": ["SECOND"],
+                    "requiresPlaceSelection": false,
+                    "flexibilities": ["FULL_FLEXIBLE", "NON_FLEXIBLE"]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "offerSearchCriteria": [
+                {
+                    "requestedOfferParts": ["RESERVATION", "ADMISSION"],
+                    "currency": "EUR",
+                    "serviceClass": ["STANDARD"],
+                    "travelClass": ["SECOND"],
+                    "requiresPlaceSelection": false,
+                    "flexibilities": ["FULL_FLEXIBLE", "NON_FLEXIBLE"],
+                    "offerMode": "COLLECTIVE"
+                }
+            ]
+        }
+    ],
+	"requestedFulfillmentOptions": [
+        {
+            "id": 1,
+            "requestedFulfillmentOptions": []
+        }
+    ],
+    "tripRequirements": [
+        {
+            "id": 1,
+            "tripType": "SEARCH",
+            "trip": 
+                {
+                    "origin": "urn:uic:stn:8748100",
+                    "destination": "urn:uic:stn:8739100",
+                    "startDatetime": "%TRIP_DATE%T06:40:00Z02:00Z",
+                    "endDatetime": "%TRIP_DATE%T08:45:00Z02:00Z"
+                }
+        },
+        {
+            "id": 2,
+            "tripType": "SEARCH",
+            "trip": 
+                {
+                    "origin": "urn:uic:stn:8748100",
+                    "destination": "urn:uic:stn:8739100",
+                    "startDatetime": "%TRIP_DATE%T06:40:00Z02:00Z",
+                    "endDatetime": "%TRIP_DATE%T08:45:00Z02:00Z"
+                }
+        }
+    ],
+    "passengersList": [
+        {
+            "id": 1,
+            "passengers": [
+                {
+                    "reference": "12345",
+                    "dateOfBirth": "1999-01-01",
+					"patchFirstName": "john",
+					"patchLastName": "doe",
+                    "patchDateOfBirth": "1999-01-02",
+					"patchPhoneNumber": "33612345678",
+					"patchEmail": "email@email.com",
+                    "type": "PERSON"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "passengers": [
+                {
+                    "reference": "12345",
+                    "dateOfBirth": "1999-01-01",
+					"patchFirstName": "john",
+					"patchLastName": "doe",
+                    "patchDateOfBirth": "1999-01-02",
+					"patchPhoneNumber": "33612345678",
+					"patchEmail": "email@email.com",
+                    "type": "PERSON"
+                },
+                {
+                    "reference": "54321",
+                    "dateOfBirth": "2000-01-01",
+					"patchFirstName": "marta",
+					"patchLastName": "doe",
+                    "patchDateOfBirth": "2000-01-02",
+					"patchPhoneNumber": "33612345678",
+					"patchEmail": "email@email.com",
+                    "type": "PERSON"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "passengers": [
+                {
+                    "reference": "12345",
+                    "dateOfBirth": "1999-01-01",
+					"patchFirstName": "john",
+					"patchLastName": "doe",
+                    "patchDateOfBirth": "1999-01-02",
+					"patchPhoneNumber": "33612345678",
+					"patchEmail": "email@email.com",
+                    "type": "PERSON"
+                },
+                {
+                    "reference": "23451",
+                    "dateOfBirth": "2000-01-01",
+					"patchFirstName": "marta",
+					"patchLastName": "doe",
+                    "patchDateOfBirth": "2000-01-02",
+					"patchPhoneNumber": "33612345678",
+					"patchEmail": "email@email.com",
+                    "type": "PERSON"
+                },
+                {
+                    "reference": "34512",
+                    "dateOfBirth": "2018-01-01",
+					"patchFirstName": "alice",
+					"patchLastName": "doe",
+                    "patchDateOfBirth": "2018-01-02",
+					"patchPhoneNumber": "33612345678",
+					"patchEmail": "email@email.com",
+                    "type": "PERSON"
+                }
+            ]
+        }
+    ]
+}
