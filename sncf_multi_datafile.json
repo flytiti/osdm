@@ -119,6 +119,10 @@
                 {
                     "reference": "12345",
                     "dateOfBirth": "1999-01-01",
+			"firstName": "John",
+			"lastName": "Doe",
+			"phoneNumber": "33612345678",
+			"email": "john.doe@gmail.com",
 					"patchFirstName": "john",
 					"patchLastName": "doe",
                     "patchDateOfBirth": "1999-01-02",
