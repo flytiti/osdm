@@ -95,7 +95,7 @@
             "trip": 
                 {
                     "origin": "urn:uic:stn:8748100",
-                    "destination": "urn:uic:stn:8739100",
+                    "destination": "urn:uic:stn:8775100",
                     "startDatetime": "%TRIP_DATE%T06:40:00Z02:00Z",
                     "endDatetime": "%TRIP_DATE%T08:45:00Z02:00Z"
                 }
@@ -106,7 +106,7 @@
             "trip": 
                 {
                     "origin": "urn:uic:stn:8748100",
-                    "destination": "urn:uic:stn:8739100",
+                    "destination": "urn:uic:stn:8775100",
                     "startDatetime": "%TRIP_DATE%T06:40:00Z02:00Z",
                     "endDatetime": "%TRIP_DATE%T08:45:00Z02:00Z"
                 }
