@@ -80,12 +80,14 @@ function buildBookingRequest() {
 	var osdmVersion = pm.globals.get("osdmVersion");
 
 	// Check the OSDM version and create the purchaser object accordingly
-	if (osdmVersion == "3.4") {
-		var contact = new Contact("yourusername@example.com", "+33612345678");
-		var detail = new DetailContact("Pur", "Chaser", contact);
+	// modif TGA - Ajout => || osdmVersion == "3.2.2"
+	if (osdmVersion == "3.4" || osdmVersion == "3.2.2") {
+		// // modif TGA - suppression du + dans numero telephone
+		var contact = new Contact("yourusername@example.com","33612345678");
+		var detail = new DetailContact("Pur","Chaser", contact);
 		var purchaser = new PurchaserContact(detail);
-	} else {
-		var detail = new Detail("Pur", "Chaser", "yourusername@example.com", "+33612345678");
+	} else {	
+		var detail = new Detail("Pur","Chaser","yourusername@example.com","+33612345678");
 		var purchaser = new Purchaser(detail);
 	}
 
@@ -415,11 +417,28 @@ parseScenarioData = function(jsonData) {
 							passenger.dateOfBirth
 						));
 
-						passengerSpecs.push(new PassengerSpec(
-								pm.globals.get(passengerKey),
-								passenger.type,
-								passenger.dateOfBirth
-							));
+						// modif TGA - ajout 
+					if(passenger.firstName!="" & passenger.lastName!="") {
+					    var contact = new Contact(passenger.email, 
+								  passenger.phoneNumber);
+					    var detailContact = new DetailContact(passenger.firstName, 
+									      passenger.lastName, 
+									      contact);
+
+					    passengerSpecs.push(new PassengerSpec(
+					            pm.globals.get(passengerKey),
+					            passenger.type,
+					            passenger.dateOfBirth,
+						    detailContact
+					        ));
+					} else {  
+				    	    passengerSpecs.push(new PassengerSpec(
+					            pm.globals.get(passengerKey),
+					            passenger.type,
+					            passenger.dateOfBirth
+					        ));
+					}
+					// fin modif TGA
 						passengerReferences.push(pm.globals.get(passengerKey));
 
 						let passengerAdditionalDataStruct = {
@@ -916,9 +935,72 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 	// Select the desired offer based on flexibility
 	let desiredFlexibility = pm.globals.get("desiredFlexibility"); 
-	let selectedOffers = offers.filter(offer => 
-		offer.offerSummary && offer.offerSummary.overallFlexibility === desiredFlexibility
+
+//modif TGA - Ajout
+	
+	console.log("[INFO] offers : ", offers);
+	var finalOfferId = "";
+	offers.every(function(offer) {
+		
+		var productFlexibilityList = [];
+		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseignée
+	  	if (offer.offerSummary===undefined) {
+			offer.products.forEach(function(product) {
+				productFlexibilityList.push(product.flexibility);
+			});
+			console.log("[INFO] offer offerSummary not defined, search product flexibilities");
+			console.log("[INFO] offer products flexibilities : ", productFlexibilityList);
+
+			// productFlexibilityList unique
+			var uniqueProductFlexibilityList = [];
+			productFlexibilityList.forEach(function(item) {
+			    if (!uniqueProductFlexibilityList.includes(item)) {
+			        uniqueProductFlexibilityList.push(item);
+			    }
+			});
+			
+			//degradation flexibilité
+			var finalFlexibility = "";
+			const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
+			for (let flexibility in flexibilities) {
+				for (let uniqueFlexibility in uniqueProductFlexibilityList) {
+					if (flexibilities[flexibility] === uniqueProductFlexibilityList[uniqueFlexibility]) {
+						finalFlexibility = flexibilities[flexibility];
+					}
+				}
+			}
+			console.log("[INFO] Most restrictive flexibility : ", finalFlexibility);
+
+			if (finalFlexibility === desiredFlexibility) {
+				finalOfferId = offer.offerId;
+				return false;
+			}
+			
+		} else {
+			console.log("[INFO] offer offerSummary is defined, search offer offerSummary overallFlexibility");
+
+			if (offer.offerSummary.overallFlexibility === desiredFlexibility) {
+				finalOfferId = offer.offerId;
+				return false;
+			}
+		}
+
+		return true;
+	});
+
+	let selectedOffer = offers.find(offer => 
+		offer.offerId === finalOfferId
 	);
+	//modif TGA - fin Ajout
+
+	//modif TGA - Suppression
+	/*let selectedOffer = offers.find(offer => 
+		offer.offerSummary.overallFlexibility === desiredFlexibility
+	);*/
+	//modif TGA - fin Suppression
+
+
+	
 	let selectedOffer = selectedOffers.length > 0 ? selectedOffers[0] : null;
 	validationLogger("[INFO] DesiredFlexibility for current scenario : " + desiredFlexibility);
 
