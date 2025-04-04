@@ -9,7 +9,8 @@
             "tripRequirementId": 1,
             "passengersListId": 1,
             "offerSearchCriteriaListId" : 1,
-            "requestedFulfillmentOptionsListId": 1
+            "requestedFulfillmentOptionsListId": 1,
+	    "desiredFlexibility": "SEMI_FLEXIBLE"
         },
         {
 			"loggingType": "INFO",
