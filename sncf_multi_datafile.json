@@ -77,7 +77,7 @@
             ]
         }
     ],
-	"requestedFulfillmentOptions": [
+	"requestedFulfillmentOptionsList": [
         {
             "id": 1,
             "requestedFulfillmentOptions": [
