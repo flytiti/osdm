@@ -397,6 +397,14 @@ parseScenarioData = function(jsonData) {
 			pm.globals.set("desiredType", jsonData.scenarios[dataFileIndex].desiredType);
 			pm.globals.set("ScenarioCode", jsonData.scenarios[dataFileIndex].code);
 
+			validationLogger("[INFO] load loggingType : " + pm.globals.get("loggingType"));
+			validationLogger("[INFO] load osdmVersion : " + pm.globals.get("osdmVersion"));
+			validationLogger("[INFO] load refundOverruleCode : " + pm.globals.get("refundOverruleCode"));
+			validationLogger("[INFO] load refundDate : " + pm.globals.get("refundDate"));
+			validationLogger("[INFO] load desiredType : " + pm.globals.get("desiredType"));
+			validationLogger("[INFO] load code : " + pm.globals.get("code"));
+			
+
 			// Loop through the passengers list to find the matching passengers list ID
 			jsonData.passengersList.some(function(passengersList){
 				if(passengersList.id==jsonData.scenarios[dataFileIndex].passengersListId){
