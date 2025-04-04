@@ -80,7 +80,12 @@
 	"requestedFulfillmentOptions": [
         {
             "id": 1,
-            "requestedFulfillmentOptions": []
+            "requestedFulfillmentOptions": [
+		    {
+		            "fulfillmentMedia": "UIC_PDF",
+		            "fulfillmentType": "ETICKET"
+		        }
+	    ]
         }
     ],
     "tripRequirements": [
