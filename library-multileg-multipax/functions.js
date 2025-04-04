@@ -1042,7 +1042,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 		pm.globals.set("reservationId", reservationOfferPart.id);
 	} else {
 		validationLogger("skipping Get Place Maps for Reservation of Offer");
-		pm.execution.setNextRequest("03. Create a Booking");
+		pm.execution.setNextRequest("03. POST Create a Booking");
 	}
 };
 
