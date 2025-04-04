@@ -935,6 +935,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 	// Select the desired offer based on flexibility
 	let desiredFlexibility = pm.globals.get("desiredFlexibility"); 
+	validationLogger("[INFO] DesiredFlexibility for current scenario : " + desiredFlexibility);
 
 //modif TGA - Ajout
 	
@@ -1002,7 +1003,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 	
 	//let selectedOffer = selectedOffers.length > 0 ? selectedOffers[0] : null;
-	validationLogger("[INFO] DesiredFlexibility for current scenario : " + desiredFlexibility);
+	//validationLogger("[INFO] DesiredFlexibility for current scenario : " + desiredFlexibility);
 
 	// Set the offer
 	pm.globals.set("offers", offers);
