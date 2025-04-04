@@ -401,6 +401,7 @@ parseScenarioData = function(jsonData) {
 			validationLogger("[INFO] load osdmVersion : " + pm.globals.get("osdmVersion"));
 			validationLogger("[INFO] load refundOverruleCode : " + pm.globals.get("refundOverruleCode"));
 			validationLogger("[INFO] load refundDate : " + pm.globals.get("refundDate"));
+			validationLogger("[INFO] load desiredFlexibility : " + pm.globals.get("desiredFlexibility"));
 			validationLogger("[INFO] load desiredType : " + pm.globals.get("desiredType"));
 			validationLogger("[INFO] load code : " + pm.globals.get("code"));
 			
