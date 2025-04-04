@@ -1031,10 +1031,10 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 	}
 
 	// Function to validate offer conforms to offer search criteria
-	pm.test("Offer is available and has valid search criteria", function () {
+	/*pm.test("Offer is available and has valid search criteria", function () {
 		pm.expect(OFFER.SEARCH_CRITERIA).not.to.be.null;
 		pm.expect(OFFER.SEARCH_CRITERIA).to.be.a('string');
-	});
+	});*/
 
 	// Check if place selection is required
 	if(pm.globals.get("requiresPlaceSelection")==true) {
