@@ -1001,7 +1001,7 @@ validateOfferResponse = function(passengerSpecifications, searchCriteria, fulfil
 
 
 	
-	let selectedOffer = selectedOffers.length > 0 ? selectedOffers[0] : null;
+	//let selectedOffer = selectedOffers.length > 0 ? selectedOffers[0] : null;
 	validationLogger("[INFO] DesiredFlexibility for current scenario : " + desiredFlexibility);
 
 	// Set the offer
