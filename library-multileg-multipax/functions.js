@@ -497,6 +497,7 @@ parseScenarioData = function(jsonData) {
 	if(foundCorrectDataSet==false) {
 		throw new Error("[INFO] ⛔ Wrong scenario code. No data set found for this scenario : "+scenarioCode);
 	}
+validationLogger("[INFO] ✅ End parsing scenario");
 }
 
 // Function to set trip search criteria
