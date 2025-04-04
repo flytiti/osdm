@@ -121,6 +121,16 @@ var PassengerSpec = class {
     }
 }
 
+// modif TGA - Ajout surcharge class
+var PassengerSpec = class {
+    constructor(externalRef, type, dateOfBirth, detail) {
+        this.externalRef = externalRef;
+        this.type = type;
+        this.dateOfBirth = dateOfBirth;
+	this.detail = detail;
+    }
+}
+
 var Purchaser = class {
     constructor(detail) {
         this.detail = detail;
