@@ -1147,7 +1147,7 @@ displayOfferResponse = function(response) {
 	}
 };
 
-validateBookingResponse = function(offers, offerId, booking, state) {
+/*validateBookingResponse = function(offers, offerId, booking, state) {
 	// Extract booking details
 	var bookingId = booking.id;
 	var createdOn = new Date(booking.createdOn);
@@ -1246,7 +1246,86 @@ validateBookingResponse = function(offers, offerId, booking, state) {
 
 	});
 
+};*/
+
+/**************************************************/
+
+validateBookingResponse = function( passengerSpecifications, searchCriteria, fulfillmentOptions, offers, offerId, booking, scenarioType, state) {
+	var bookingId = booking.id;
+	var createdOn = new Date(booking.createdOn);
+	var passengers = booking.passengers;
+	var confirmationTimeLimit = new Date(booking.confirmationTimeLimit);
+	var bookedOffers = booking.bookedOffers;
+
+	validationLogger("[INFO] Checking booking with Id : "+bookingId);
+	validationLogger("[INFO] Offer Id : "+offerId);
+
+	//check the bookingId
+	pm.test("a bookingId is returned", function () {
+        pm.expect(bookingId).to.be.a('string').and.not.be.empty;
+    });
+
+	//check the creation date
+	var currentDate = new Date();
+	validationLogger("[INFO] CreatedOn specific date format is valid : " + currentDate);
+	pm.test("Correct createdOn is returned", function () {
+        pm.expect(currentDate.getDate()).to.equal(createdOn.getDate());
+        pm.expect(currentDate.getMonth()).to.equal(createdOn.getMonth());
+        pm.expect(currentDate.getFullYear()).to.equal(createdOn.getFullYear());
+    });
+
+    //check if a confirmationTimeLimit is available to check
+    if(booking.confirmationTimeLimit!=undefined&&booking.confirmationTimeLimit!=null){
+	    //check the confirmationTimeLimit
+	    pm.test("a correct confirmationTimeLimit is returned", function () {
+	    	var current = currentDate.getTime();
+	    	var confirmation = confirmationTimeLimit.getTime();
+	        pm.expect(confirmation).to.be.above(current);
+	    });
+    }
+
+    var offer = null;
+    offers.some(function(internalOffer){
+    	if(internalOffer.offerId==offerId){
+    		offer = internalOffer;
+    		return true;
+    	}
+    });
+
+    if(offer==undefined||offer==null) {
+    	validationLogger("[INFO] No correct offer can be found, skipping rest of validation");
+    	return;
+    } else {
+    	validationLogger("[INFO] Correct offer from offer response found, performing rest of validation");
+    }
+
+    var found = bookedOffers.some(function(bookedOffer){
+		return compareOffers(bookedOffer, offer, booking, state);
+	});
+
+	pm.test("Correct offer "+offer.offerId+" is returned", function () {
+        pm.expect(found).to.equal(true);
+    });
+
+    //check that all the passengers match the passengers from the offer
+	offer.passengerRefs.forEach(function(passenger){
+		var found = false;
+		found = passengers.some(function(bookedPassenger){
+			validationLogger("[INFO] Comparing bookedPassenger.externalRef : "+bookedPassenger.externalRef+" to pasenger ref : "+passenger);
+			if(bookedPassenger.externalRef==passenger){
+				return true;
+			}
+		});
+
+		pm.test("passenger "+passenger+" returned", function () {
+			pm.expect(found).to.equal(true);
+		});
+
+	});
+
 };
+
+/**************************************************/
 
 displayBookingResponse = function(response) {
 	validationLogger(`[FULL] Booking ID: ${response.booking.id}`);
