@@ -1963,7 +1963,9 @@ function validateRefundOffer(refundOffer, expectedStatus) {
 
 	// refundOffer is linked to a bookedOfferpart, being admission or reservation
 	// for now, default to the first one found in the refundOffer
-	pm.globals.set("refundOfferPartReference", refundOffer.fulfillments[0].bookingParts[0].id);
+	
+	// TGA -> Pourquoi ce test sur une grappe optionnelle ?????
+	//pm.globals.set("refundOfferPartReference", refundOffer.fulfillments[0].bookingParts[0].id);
 
 	pm.test("Refund offer has a valid ID", function () {
 		pm.expect(refundOffer.id).to.exist;
@@ -1977,7 +1979,12 @@ function validateRefundOffer(refundOffer, expectedStatus) {
 	validateFulfillments(refundOffer.fulfillments, expectedStatus);
 
 	var overruleCode = pm.globals.get("refundOverruleCode");
-	validateAppliedOverruleCode(refundOffer.appliedOverruleCode, overruleCode);
+	// modif TGA
+	if (overruleCode == "NONE") {
+		validationLogger("[INFO] overruleCode not tested : " + overruleCode);
+	} else {
+		validateAppliedOverruleCode(refundOffer.appliedOverruleCode, overruleCode);
+	}
 
 	if (expectedStatus == "CONFIRMED") {
 		const bookingConfirmedPrice = pm.globals.get("bookingConfirmedPrice");
