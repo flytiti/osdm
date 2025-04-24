@@ -360,9 +360,16 @@ function selectAndSetOffer(offers) {
 	pm.globals.set("offerId", selectedOffer.offerId);
 	pm.globals.set("offer", selectedOffer);
 
-	if (selectedOffers.length === 0) {
+
+	
+	//*****************************************************************************************************************************************
+	// suppression TGA
+	/*if (selectedOffers.length === 0) {
 		validationLogger("[INFO] Offer doesn't match the entry FLEXIBILITY criteria, taking the 1st offer in the list");
-	}
+	}*/
+	// finsuppression TGA
+	//*****************************************************************************************************************************************
+	
 }
 
 // Helper function to handle place selection
