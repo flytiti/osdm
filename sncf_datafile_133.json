@@ -105,18 +105,16 @@
     "purchasers": [
         {
             "id": 1,
-            "puchaser": [
-                {
+            "puchaser": {
                     "purchaserEmail": "emailpurchaser@email.com",
 
                     "updatePurchaserEmail": "updateeemailpurchaser@email.com",
                 }
-            ]
+            
         },
 	{
             "id": 2,
-            "puchaser": [
-                {
+            "puchaser": {
 		    "reference": "12345",
                     "purchaserFirstName": "JohnPurchaser",
                     "purchaserLastName": "DoePurchaser",
@@ -131,7 +129,6 @@
                     "updatePurchaserDateOfBirth": "1999-01-01"
 
                 }
-            ]
         }
     ]
     "passengersList": [
