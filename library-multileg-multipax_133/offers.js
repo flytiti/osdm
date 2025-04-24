@@ -364,9 +364,9 @@ function selectAndSetOffer(offers) {
 	
 	//*****************************************************************************************************************************************
 	// suppression TGA
-	/*if (selectedOffers.length === 0) {
+	if (selectedOffers.length === 0) {
 		validationLogger("[INFO] Offer doesn't match the entry FLEXIBILITY criteria, taking the 1st offer in the list");
-	}*/
+	}
 	// finsuppression TGA
 	//*****************************************************************************************************************************************
 	
