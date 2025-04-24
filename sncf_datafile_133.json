@@ -1,0 +1,230 @@
+{
+    "scenarios": [
+        {
+			"loggingType": "INFO",
+            "code": "OTST_RFND_SRCH_CRIT_1ADT_1LEG",
+            "osdmVersion": "3.2.2",
+            "desiredType": "ADMISSION",
+            "desiredFlexibility": "SEMI_FLEXIBLE",
+            "refundOverruleCode": "PAYMENT_FAILURE",
+			"refundDate": "2025-04-18",
+            "tripRequirementId": 1,
+            "passengersListId": 1,
+            "offerSearchCriteriaListId" : 1,
+            "requestedFulfillmentOptionsListId": 1
+        }
+    ],
+	"offerSearchCriteriaList": [
+        {
+            "id": 1,
+            "offerSearchCriteria": [
+                {
+                    "requestedOfferParts": ["RESERVATION", "ADMISSION"],
+                    "currency": "EUR",
+                    "serviceClass": ["STANDARD"],
+                    "travelClass": ["SECOND"],
+                    "requiresPlaceSelection": false,
+                    "flexibilities": ["FULL_FLEXIBLE", "NON_FLEXIBLE"]
+                }
+            ]
+        }
+    ],
+    "requestedFulfillmentOptionsList": [
+        {
+            "id": 1,
+            "requestedFulfillmentOptions": [
+                {
+                    "fulfillmentMedia": "UIC_PDF",
+                    "fulfillmentType": "ETICKET"
+                }
+            ]
+        }
+    ],
+    "tripRequirements": [
+        {
+            "id": 1,
+            "tripType": "SEARCH",
+            "trip": 
+                {
+                    "origin": "urn:uic:stn:8748100",
+                    "destination": "urn:uic:stn:8775100",
+                    "startDatetime": "%TRIP_DATE%T06:40:00Z02:00Z",
+                    "endDatetime": "%TRIP_DATE%T08:45:00Z02:00Z",
+                    "productCategoryRef": "",
+                    "productCategoryName": "",
+                    "productCategoryShortName": "",
+                    "vehicleNumber": "",
+                    "operatorCode": ""                    
+                }
+        },
+        {
+            "id": 2,
+            "tripType": "SEARCH",
+            "trip": 
+                {
+                    "origin": "urn:uic:stn:8841004",
+                    "destination": "urn:uic:stn:8821121",
+                    "startDatetime": "%TRIP_DATE%T07:00:00+02:00",
+                    "endDatetime": "%TRIP_DATE%T10:20:00+02:00",
+                    "productCategoryRef": "",
+                    "productCategoryName": "",
+                    "productCategoryShortName": "",
+                    "vehicleNumber": "429",
+                    "operatorCode": "urn:uic:rics:1088"
+                }
+        },        
+        {
+            "id": 3,
+            "tripType": "SPECIFICATION",
+            "legs": [
+               {
+                    "origin": "urn:uic:stn:8841004",
+                    "destination": "urn:uic:stn:8812005",
+                    "startDatetime": "%TRIP_DATE%T07:30:00+02:00",
+                    "endDatetime": "%TRIP_DATE%T08:19:00+02:00",
+                    "productCategoryRef": "",
+                    "productCategoryName": "",
+                    "productCategoryShortName": "",
+                    "vehicleNumber": "429",
+                    "operatorCode": "urn:uic:rics:1088"
+                },
+                {
+                    "origin": "urn:uic:stn:8812005",
+                    "destination": "urn:uic:stn:8821121",
+                    "startDatetime": "%TRIP_DATE%T08:33:00+02:00",
+                    "endDatetime": "%TRIP_DATE%T09:01:00+02:00",
+                    "productCategoryRef": "",
+                    "productCategoryName": "",
+                    "productCategoryShortName": "",
+                    "vehicleNumber": "4507",
+                    "operatorCode": "urn:uic:rics:1088"
+                }
+            ]
+        }
+    ],
+    "passengersList": [
+        {
+            "id": 1,
+            "passengers": [
+                {
+                    "type": "PERSON",
+					"reference": "12345",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "33699999999",
+                    "purchaserEmail": "emailPurchaser@email.com",
+                    "dateOfBirth": "1999-01-01",
+                    "firstName": "John",
+                    "lastName": "Doe",
+					"phoneNumber": "33612345678",
+					"email": "emailPassenger1@email.com",
+                    "updateFirstName": "JohnUpdate",
+                    "updateLastName": "DoeUpdate",
+                    "updateDateOfBirth": "1999-01-02",
+					"updatePhoneNumber": "+33612345679",
+					"updateEmail": "email@email.com"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "passengers": [
+                {
+                    "reference": "00001",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "+33699999999",
+                    "purchaserEmail": "emailPurchaser@email.com",
+                    "dateOfBirth": "1999-01-01",
+                    "firstName": "John",
+                    "lastName": "Doe",
+					"phoneNumber": "+33612345678",
+					"email": "email@email.com",
+                    "updateFirstName": "JohnUpdate",
+                    "updateLastName": "DoeUpdate",
+                    "updateDateOfBirth": "1999-01-02",
+					"updatePhoneNumber": "+33612345679",
+					"updateEmail": "email@email.com",
+                    "type": "PERSON"
+                },
+                {
+                    "reference": "00002",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "+33699999999",
+                    "purchaserEmail": "emailPurchaser@email.com",
+                    "dateOfBirth": "1999-01-03",
+                    "firstName": "Marta",
+                    "lastName": "Doe",
+					"phoneNumber": "+33612345678",
+					"email": "email@email.com",
+                    "updateFirstName": "MartaUpdate",
+                    "updateLastName": "DoeUpdate",
+                    "updateDateOfBirth": "1999-01-04",
+					"updatePhoneNumber": "+33612345679",
+					"updateEmail": "email@email.com",
+                    "type": "PERSON"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "passengers": [
+                {
+                    "reference": "00001",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "+33699999999",
+                    "purchaserEmail": "emailPurchaser@email.com",
+                    "dateOfBirth": "1999-01-01",
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "phoneNumber": "+33612345678",
+                    "email": "email@email.com",
+                    "updateFirstName": "JohnUpdate",
+                    "updateLastName": "DoeUpdate",
+                    "updateDateOfBirth": "1999-01-02",
+					"updatePhoneNumber": "+33612345679",
+					"updateEmail": "email@email.com",
+                    "type": "PERSON"
+                },
+                {
+                    "reference": "00002",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "+33699999999",
+                    "purchaserEmail": "emailPurchaser@email.com",
+                    "dateOfBirth": "1999-01-03",
+                    "firstName": "Marta",
+                    "lastName": "Doe",
+                    "phoneNumber": "+33612345678",
+                    "email": "email@email.com",
+                    "updateFirstName": "MartaUpdate",
+                    "updateLastName": "DoeUpdate",
+                    "updateDateOfBirth": "1999-01-04",
+					"updatePhoneNumber": "+33612345679",
+					"updateEmail": "email@email.com",
+                    "type": "PERSON"
+                },
+                {
+                    "reference": "00003",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "+33699999999",
+                    "purchaserEmail": "emailPurchaser@email.com",
+                    "dateOfBirth": "2010-01-01",
+                    "firstName": "Alice",
+                    "lastName": "Doe",
+                    "phoneNumber": "+33612345678",
+                    "email": "email@email.com",
+                    "updateFirstName": "AliceUpdate",
+                    "updateLastName": "DoeUpdate",
+                    "updateDateOfBirth": "2010-01-02",
+					"updatePhoneNumber": "+33612345679",
+					"updateEmail": "email@email.com",
+                    "type": "PERSON"
+                }
+            ]
+        }
+    ]
+}
