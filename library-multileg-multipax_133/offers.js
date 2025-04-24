@@ -288,9 +288,71 @@ function validateAnonymousPassengerSpecifications() {
 // Helper function to select and set the desired offer
 function selectAndSetOffer(offers) {
 	const desiredFlexibility = pm.globals.get("desiredFlexibility");
-	const selectedOffers = offers.filter(offer => offer.offerSummary?.overallFlexibility === desiredFlexibility);
-	const selectedOffer = selectedOffers.length > 0 ? selectedOffers[0] : offers[0];
 
+
+	//*****************************************************************************************************************************************
+	// suppression TGA
+	//const selectedOffers = offers.filter(offer => offer.offerSummary?.overallFlexibility === desiredFlexibility);
+	//const selectedOffer = selectedOffers.length > 0 ? selectedOffers[0] : offers[0];
+	// ajout TGA
+	console.log("[INFO] offers : ", offers);
+	var finalOfferId = "";
+	offers.every(function(offer) {
+		
+		var productFlexibilityList = [];
+		// modif TGA - Si offerSummary non renseigné - else Si offerSummary renseignée
+	  	if (offer.offerSummary===undefined) {
+			offer.products.forEach(function(product) {
+				productFlexibilityList.push(product.flexibility);
+			});
+			console.log("[INFO] offer offerSummary not defined, search product flexibilities");
+			console.log("[INFO] offer products flexibilities : ", productFlexibilityList);
+
+			// productFlexibilityList unique
+			var uniqueProductFlexibilityList = [];
+			productFlexibilityList.forEach(function(item) {
+			    if (!uniqueProductFlexibilityList.includes(item)) {
+			        uniqueProductFlexibilityList.push(item);
+			    }
+			});
+			
+			//degradation flexibilité
+			var finalFlexibility = "";
+			const flexibilities = ["BUSINESS", "FLEXIBLE", "SEMI_FLEXIBLE", "NON_FLEX", "PROMO"];
+			for (let flexibility in flexibilities) {
+				for (let uniqueFlexibility in uniqueProductFlexibilityList) {
+					if (flexibilities[flexibility] === uniqueProductFlexibilityList[uniqueFlexibility]) {
+						finalFlexibility = flexibilities[flexibility];
+					}
+				}
+			}
+			console.log("[INFO] Most restrictive flexibility : ", finalFlexibility);
+
+			if (finalFlexibility === desiredFlexibility) {
+				finalOfferId = offer.offerId;
+				return false;
+			}
+			
+		} else {
+			console.log("[INFO] offer offerSummary is defined, search offer offerSummary overallFlexibility");
+
+			if (offer.offerSummary.overallFlexibility === desiredFlexibility) {
+				finalOfferId = offer.offerId;
+				return false;
+			}
+		}
+
+		return true;
+	});
+
+	let selectedOffer = offers.find(offer => 
+		offer.offerId === finalOfferId
+	);
+	// fin ajout TGA
+	//*****************************************************************************************************************************************
+
+
+	
 	validationLogger("[INFO] DesiredFlexibility for current scenario : " + desiredFlexibility);
 	console.log("[INFO] 🔍 Selected offer : ", selectedOffer);
 
