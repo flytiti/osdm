@@ -124,7 +124,8 @@ var PassengerSpec = class {
 }
 
 var Purchaser = class {
-    constructor(detail) {
+    constructor(externalRef, detail) {
+	this.externalRef = externalRef;
         this.detail = detail;
     }
 }
