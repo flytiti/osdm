@@ -270,9 +270,12 @@ function validateOfferSearchCriteria(trips) {
 				return matches;
 			});
 
+			//*****************************************************************************************************************************************
+			// suppression TGA
 			pm.test("Correct legs matching search criteria are returned", function () {
 				pm.expect(found).to.equal(true);
 			});
+			//*****************************************************************************************************************************************
 		});
 	}
 }
