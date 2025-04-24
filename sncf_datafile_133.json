@@ -9,6 +9,7 @@
             "refundOverruleCode": "PAYMENT_FAILURE",
 			"refundDate": "2025-04-18",
             "tripRequirementId": 1,
+	    "purchaserId": 1,
             "passengersListId": 1,
             "offerSearchCriteriaListId" : 1,
             "requestedFulfillmentOptionsListId": 1
