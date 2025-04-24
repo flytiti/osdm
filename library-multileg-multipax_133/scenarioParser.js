@@ -151,7 +151,7 @@ parseScenarioData = function(jsonData) {
 			jsonData.purchasers.some(function(purchasers){
 				if(purchasers.id==jsonData.scenarios[dataFileIndex].purchaserId){
 					var purchaserSpecs = [];
-					validationLogger('[INFO] Found purchaser informations: ');
+					validationLogger('[INFO] Found purchaser informations');
 					validationLogger('[INFO] purchasers.purchaserFirstName: '+purchasers.purchaserFirstName);
 					validationLogger('[INFO] purchasers.purchaser.purchaserFirstName: '+purchasers.purchaser.purchaserFirstName);
 					if (osdmVersion == "3.4" || osdmVersion == "3.5") {
