@@ -108,9 +108,17 @@
             "id": 1,
             "puchaser": {
                     "purchaserReference": "12399",
-		    "purchaserEmail": "emailpurchaser@email.com",
+                    "purchaserFirstName": "JohnPurchaser",
+                    "purchaserLastName": "DoePurchaser",
+                    "purchaserPhoneNumber": "33699999999",
+                    "purchaserEmail": "emailpurchaser@email.com",
+                    "purchaserDateOfBirth": "1999-01-01",
 
+		    "updatePurchaserFirstName": "JohnPurchaser",
+                    "updatePurchaserLastName": "DoePurchaser",
+                    "updatePurchaserPhoneNumber": "33699999998",
                     "updatePurchaserEmail": "updateeemailpurchaser@email.com",
+                    "updatePurchaserDateOfBirth": "1999-01-01"
                 }
             
         },
