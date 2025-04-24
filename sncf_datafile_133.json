@@ -106,7 +106,8 @@
         {
             "id": 1,
             "puchaser": {
-                    "purchaserEmail": "emailpurchaser@email.com",
+                    "purchaserReference": "12399",
+		    "purchaserEmail": "emailpurchaser@email.com",
 
                     "updatePurchaserEmail": "updateeemailpurchaser@email.com",
                 }
@@ -115,7 +116,7 @@
 	{
             "id": 2,
             "puchaser": {
-		    "reference": "12345",
+		    "purchaserReference": "12388",
                     "purchaserFirstName": "JohnPurchaser",
                     "purchaserLastName": "DoePurchaser",
                     "purchaserPhoneNumber": "33699999999",
@@ -136,7 +137,7 @@
             "id": 1,
             "passengers": [
                 {
-                    "passenegrType": "PERSON",
+                    "passengerType": "PERSON",
 		    "passengerReference": "12345",
                     "passengerDateOfBirth": "1999-01-01",
                     "passengerFirstName": "JohnPassenger",
