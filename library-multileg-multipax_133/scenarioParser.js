@@ -279,8 +279,8 @@ parseScenarioData = function(jsonData) {
 						passengerAdditionalData.push(passengerAdditionalDataStruct);
 						passengerIndex++;
 					});
-					validationLogger("[DEBUG] 🪲 DUMMY4")
-validationLogger('[INFO] Pushed passengerSpec to globals: '+JSON.stringify(passengerSpecs));
+					validationLogger("[DEBUG] 🪲 DUMMY4");
+					validationLogger('[INFO] Pushed passengerSpec to globals: '+JSON.stringify(passengerSpecs));
 					validationLogger('[INFO] Pushed passengerSpec to globals: '+JSON.stringify(passengerSpecs));
 					//*****************************************************************************************************************************************
 					// suppression TGA
