@@ -106,7 +106,7 @@
     "purchasers": [
         {
             "id": 1,
-            "puchaser": {
+            "purchaser": {
                     "purchaserReference": "12399",
                     "purchaserFirstName": "JohnPurchaser",
                     "purchaserLastName": "DoePurchaser",
@@ -124,7 +124,7 @@
         },
 	{
             "id": 2,
-            "puchaser": {
+            "purchaser": {
 		    "purchaserReference": "12388",
                     "purchaserFirstName": "JohnPurchaser",
                     "purchaserLastName": "DoePurchaser",
