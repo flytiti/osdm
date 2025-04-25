@@ -145,42 +145,6 @@ parseScenarioData = function(jsonData) {
 			pm.globals.set("desiredType", jsonData.scenarios[dataFileIndex].desiredType);
 			pm.globals.set("ScenarioCode", jsonData.scenarios[dataFileIndex].code);
 			validationLogger("[DEBUG] 🪲 DUMMY0")
-			
-			//*****************************************************************************************************************************************
-			// ajout TGA
-			/*validationLogger('[INFO] ****************************');
-			jsonData.purchasers.some(function(purchasers){
-				if(purchasers.id==jsonData.scenarios[dataFileIndex].purchaserId){
-					var purchaserSpecs = [];
-					validationLogger('[INFO] Found purchaser informations');
-					validationLogger('[INFO] purchasers.purchaserFirstName: '+purchasers.purchaserFirstName);
-					validationLogger('[INFO] purchasers.purchaser.purchaserFirstName: '+purchasers.purchaser.purchaserFirstName);
-					if (osdmVersion == "3.4" || osdmVersion == "3.5") {
-							purchaserSpecs.push(new PurchaserContact(
-								new DetailContact(
-									purchasers.purchaserFirstName,
-									purchasers.purchaserLastName,
-									new Contact(
-										purchasers.purchaserEmail,
-										purchasers.purchaserPhoneNumber
-									)
-								)
-							));
-						} else {
-							purchaserSpecs.push(new Purchaser(
-								purchasers.purchaserReference,
-								new Detail(
-									purchasers.purchaserFirstName,
-									purchasers.purchaserLastName,
-									purchasers.purchaserEmail,
-									purchasers.purchaserPhoneNumber
-								)
-							));
-						}
-				}
-			}*/
-			//*****************************************************************************************************************************************
-			
 			// Loop through the passengers list to find the matching passengers list ID
 			jsonData.passengersList.some(function(passengersList){
 				if(passengersList.id==jsonData.scenarios[dataFileIndex].passengersListId){
@@ -188,10 +152,7 @@ parseScenarioData = function(jsonData) {
 					pm.globals.set(OFFER.PASSENGER_NUMBER, passengersList.passengers.length);
 					var offerPassengerSpecs = [];
 					var passengerSpecs = [];
-					//*****************************************************************************************************************************************
-					// suppression TGA
-					//var purchaserSpecs = [];
-					//*****************************************************************************************************************************************
+					var purchaserSpecs = [];
 					var passengerReferences = [];
 					var passengerAdditionalData = [];
 					var passengerIndex = 0;
@@ -201,17 +162,14 @@ parseScenarioData = function(jsonData) {
 						pm.globals.set(passengerKey, uuid.v4());
 						offerPassengerSpecs.push(new AnonymousPassengerSpec(
 							//pm.globals.get(passengerKey),
-							passenger.passengerReference,
-							passenger.passengerType,
-							passenger.passengerDateOfBirth,
+							passenger.reference,
+							passenger.type,
+							passenger.dateOfBirth,
 						));
 						validationLogger("[DEBUG] 🪲 DUMMY1")
 
 						var osdmVersion = pm.globals.get("osdmVersion");
-
-						//*****************************************************************************************************************************************
-						// suppression TGA
-						/*if (osdmVersion == "3.4" || osdmVersion == "3.5") {
+						if (osdmVersion == "3.4" || osdmVersion == "3.5") {
 							purchaserSpecs.push(new PurchaserContact(
 								new DetailContact(
 									passenger.purchaserFirstName,
@@ -231,36 +189,35 @@ parseScenarioData = function(jsonData) {
 									passenger.phoneNumber
 								)
 							));
-						}*/
-						//*****************************************************************************************************************************************
+						}
 
 						validationLogger("[DEBUG] 🪲 DUMMY2")
 						if (osdmVersion == "3.5") {
 							passengerSpecs.push(new PassengerSpec(
 								//pm.globals.get(passengerKey),
-								passenger.passengerReference,
-								passenger.passengerType,
-								passenger.passengerDateOfBirth,
+								passenger.reference,
+								passenger.type,
+								passenger.dateOfBirth,
 								new DetailContact(
-									passenger.passengerFirstName,
-									passenger.passengerLastName,
+									passenger.firstName,
+									passenger.lastName,
 									new Contact(
-										passenger.passengerEmail || null,
-										passenger.passengerPhoneNumber || null
+										passenger.email || null,
+										passenger.phoneNumber || null
 									)
 								)
 							));
 						} else {							
 							passengerSpecs.push(new PassengerSpec(
 								//pm.globals.get(passengerKey),
-								passenger.passengerReference,
-								passenger.passengerType,
-								passenger.passengerDateOfBirth,
+								passenger.reference,
+								passenger.type,
+								passenger.dateOfBirth,
 								new Detail(
-									passenger.passengerFirstName,
-									passenger.passengerLastName,
-									passenger.passengerEmail || null,
-									passenger.passengerPhoneNumber || null
+									passenger.firstName,
+									passenger.lastName,
+									passenger.email || null,
+									passenger.phoneNumber || null
 								)
 							));
 						}
@@ -269,11 +226,11 @@ parseScenarioData = function(jsonData) {
 						//passengerReferences.push(pm.globals.get(passengerKey));
 
 						let passengerAdditionalDataStruct = {
-							updateFirstName: passenger.updatePassengerFirstName,
-							updateLastName: passenger.updatePassengerLastName,
-							updateDateOfBirth: passenger.updatePassengerDateOfBirth,
-							updateEmail: passenger.updatePassengerEmail,
-							updatePhoneNumber: passenger.updatePassengerPhoneNumber,
+							updateFirstName: passenger.updateFirstName,
+							updateLastName: passenger.updateLastName,
+							updateDateOfBirth: passenger.updateDateOfBirth,
+							updateEmail: passenger.updateEmail,
+							updatePhoneNumber: passenger.updatePhoneNumber,
 						};
 						passengerAdditionalData.push(passengerAdditionalDataStruct);
 						passengerIndex++;
