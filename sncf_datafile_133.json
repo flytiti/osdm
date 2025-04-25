@@ -106,7 +106,7 @@
     "purchasers": [
         {
             "id": 1,
-            "purchaser": [{
+            "purchaser": {
                     "purchaserReference": "12399",
                     "purchaserFirstName": "JohnPurchaser",
                     "purchaserLastName": "DoePurchaser",
@@ -119,12 +119,12 @@
                     "updatePurchaserPhoneNumber": "33699999998",
                     "updatePurchaserEmail": "updateeemailpurchaser@email.com",
                     "updatePurchaserDateOfBirth": "1999-01-01"
-                }]
+                }
             
         },
 	{
             "id": 2,
-            "purchaser": [{
+            "purchaser": {
 		    "purchaserReference": "12388",
                     "purchaserFirstName": "JohnPurchaser",
                     "purchaserLastName": "DoePurchaser",
@@ -138,7 +138,7 @@
                     "updatePurchaserEmail": "updateeemailpurchaser@email.com",
                     "updatePurchaserDateOfBirth": "1999-01-01"
 
-                }]
+                }
         }
     ],
     "passengersList": [
