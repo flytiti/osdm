@@ -148,6 +148,7 @@ parseScenarioData = function(jsonData) {
 			
 			//*****************************************************************************************************************************************
 			// ajout TGA
+			validationLogger('[INFO] ****************************');
 			jsonData.purchasers.some(function(purchasers){
 				if(purchasers.id==jsonData.scenarios[dataFileIndex].purchaserId){
 					var purchaserSpecs = [];
