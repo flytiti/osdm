@@ -148,7 +148,7 @@ parseScenarioData = function(jsonData) {
 			
 			//*****************************************************************************************************************************************
 			// ajout TGA
-			validationLogger('[INFO] ****************************');
+			/*validationLogger('[INFO] ****************************');
 			jsonData.purchasers.some(function(purchasers){
 				if(purchasers.id==jsonData.scenarios[dataFileIndex].purchaserId){
 					var purchaserSpecs = [];
@@ -178,7 +178,7 @@ parseScenarioData = function(jsonData) {
 							));
 						}
 				}
-			}
+			}*/
 			//*****************************************************************************************************************************************
 			
 			// Loop through the passengers list to find the matching passengers list ID
