@@ -3,7 +3,7 @@
         {
 			"loggingType": "INFO",
             "code": "OTST_RFND_SRCH_CRIT_1ADT_1LEG",
-            "osdmVersion": "3.2.2",
+            "osdmVersion": "3.4",
             "desiredType": "ADMISSION",
             "desiredFlexibility": "SEMI_FLEXIBLE",
             "refundOverruleCode": "PAYMENT_FAILURE",
