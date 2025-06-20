@@ -108,9 +108,6 @@
             "id": 1,
             "purchaser": [
                 {
-                    "purchaserFirstName": "JohnPurchaser",
-                    "purchaserLastName": "DoePurchaser",
-                    "purchaserPhoneNumber": "+33699999998",
                     "purchaserEmail": "emailPurchaser@email.com"
                 }
             ]
