@@ -79,12 +79,12 @@ function validateRefundOffer(refundOffer, expectedStatus) {
 	const currentDate = new Date();
 	const validUntilRefundOffers = new Date(refundOffer.validUntil);
 	logRefundDetails(refundOffer);
-
+console.log("==> step 1");
 	pm.test("Valid until is set and still valid for the RefundOffers", () => {
 		pm.expect(refundOffer.validUntil).to.exist;
 		pm.expect(validUntilRefundOffers.getTime()).to.be.above(currentDate.getTime());
 	});
-
+console.log("==> step 2");
 	//TODO : Check if getting fulfillments ids is correct and compare it to bookedAdmissions/Reservations ids
 	// idsAdmissionAncillariesReservationReferenceDummy is dummy variable
 	const partRefs = [];
@@ -94,22 +94,22 @@ function validateRefundOffer(refundOffer, expectedStatus) {
 		});
 	});
 	pm.globals.set("idsAdmissionAncillariesReservationReferenceDummy", JSON.stringify(partRefs));
-
+console.log("==> step 3");
 
 	pm.test("Refund offer has a valid ID", () => {
 		pm.expect(refundOffer.id).to.exist;
 		pm.globals.set("refundId", refundOffer.id);
 	});
-
+console.log("==> step 4");
 	pm.test(`Correct status is returned on refund | Expected: ${expectedStatus} | Actual: ${refundOffer.status}`, () => {
 		pm.expect(refundOffer.status).to.equal(expectedStatus);
 	});
-	
+console.log("==> step 5");	
 	validateFulfillments(refundOffer.fulfillments, expectedStatus);
-
+console.log("==> step 6");
 	const overruleCode = pm.globals.get("refundOverruleCode");
 	validateAppliedOverruleCode(refundOffer.appliedOverruleCode, overruleCode);
-
+console.log("==> step 7");
 	if ((expectedStatus === "CONFIRMED") || (expectedStatus === "FULFILLED")) {
 		const bookingConfirmedPrice = pm.globals.get("bookingConfirmedPrice");
 		validateRefundableAmount(refundOffer, overruleCode, bookingConfirmedPrice);
