@@ -34,7 +34,7 @@
             "id": 1,
             "requestedFulfillmentOptions": [
                 {
-                    "fulfillmentMedia": "UIC_PDF",
+                    "fulfillmentMedia": "PDF_A4",
                     "fulfillmentType": "ETICKET"
                 }
             ]
