@@ -23,7 +23,21 @@
                     "serviceClass": ["STANDARD"],
                     "travelClass": ["SECOND"],
                     "requiresPlaceSelection": false,
-                    "flexibilities": ["FULL_FLEXIBLE", "NON_FLEXIBLE"],
+                    "flexibilities": ["SEMI_FLEXIBLE"],
+                    "offerMode": "INDIVIDUAL"
+                }
+            ]
+        },
+		{
+            "id": 2,
+            "offerSearchCriteria": [
+                {
+                    "requestedOfferParts": ["RESERVATION", "ADMISSION"],
+                    "currency": "EUR",
+                    "serviceClass": ["STANDARD"],
+                    "travelClass": ["SECOND"],
+                    "requiresPlaceSelection": false,
+                    "flexibilities": ["FULL_FLEXIBLE", "NON_FLEXIBLE","SEMI_FLEXIBLE"],
                     "offerMode": "INDIVIDUAL"
                 }
             ]
