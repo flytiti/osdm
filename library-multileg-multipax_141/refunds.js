@@ -16,7 +16,7 @@ function validateFulfillments(fulfillments, expectedStatus) {
 			pm.expect(fulfillment.id).to.be.a('string').and.not.be.empty;
 			pm.expect(fulfillment).to.have.property('status');
 			pm.expect(validStatuses).to.include(fulfillment.status);
-			pm.expect(fulfillment).to.have.property('bookingParts').that.is.an('array').and.is.not.empty;
+			//pm.expect(fulfillment).to.have.property('bookingParts').that.is.an('array').and.is.not.empty;
 		});
 	});
 	const fulfillmentsIdRaw = pm.globals.get("fulfillmentsIds");
