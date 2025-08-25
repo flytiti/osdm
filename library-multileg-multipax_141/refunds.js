@@ -88,11 +88,11 @@ console.log("==> step 2");
 	//TODO : Check if getting fulfillments ids is correct and compare it to bookedAdmissions/Reservations ids
 	// idsAdmissionAncillariesReservationReferenceDummy is dummy variable
 	const partRefs = [];
-	refundOffer.fulfillments.forEach(f => {
+/*TGA-25082025	refundOffer.fulfillments.forEach(f => {
 		f.bookingParts.forEach(bp => {
 			partRefs.push(bp.id);
 		});
-	});
+	});*/
 	pm.globals.set("idsAdmissionAncillariesReservationReferenceDummy", JSON.stringify(partRefs));
 console.log("==> step 3");
 
