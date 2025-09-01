@@ -10,7 +10,6 @@
             "desiredType": "ADMISSION",
             "desiredFlexibility": "SEMI_FLEXIBLE",
             "refundOverruleCode": "PAYMENT_FAILURE",
-			"refundDate": "2025-04-18",
             "tripRequirementId": 1,
             "passengersListId": 1,
             "offerSearchCriteriaListId" : 1,
